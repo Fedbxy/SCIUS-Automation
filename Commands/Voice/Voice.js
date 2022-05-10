@@ -85,7 +85,7 @@ module.exports = {
           return interaction.reply({embeds: [Embed.setDescription("Name must be between 1 to 22 character.").setColor("RED")], ephemeral: true});
 
         voiceChannel.edit({ name: newName });
-        interaction.reply({embeds: [Embed.setDescription(`Channel's name has been set to ${newName}.`).setColor("GREEN")], ephemeral: true});
+        interaction.reply({embeds: [Embed.setDescription(`Channel's name has been set to \`${newName}\`.`).setColor("GREEN")], ephemeral: false});
       }
       break;
       case "invite" : {
@@ -109,12 +109,12 @@ module.exports = {
         switch(toggleChoice) {
           case "on" : {
             voiceChannel.permissionOverwrites.edit(guild.id, {CONNECT: null});
-            interaction.reply({embeds: [Embed.setDescription(`The channel is now public.`)], ephemeral: true})
+            interaction.reply({embeds: [Embed.setDescription(`Your voice channel is now **public**.`)], ephemeral: false})
           }
           break;
           case "off" : {
             voiceChannel.permissionOverwrites.edit(guild.id, {CONNECT: false});
-            interaction.reply({embeds: [Embed.setDescription(`The channel is now private.`)], ephemeral: true})
+            interaction.reply({embeds: [Embed.setDescription(`Your voice channel is now **private**.`)], ephemeral: false})
           }
           break;
         }
