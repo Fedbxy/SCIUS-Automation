@@ -1,4 +1,5 @@
 const { MessageEmbed, WebhookClient, GuildMember } = require("discord.js");
+const { joinLeaveID } = require("./../../Structures/config.json");
 
 module.exports = {
   name: "guildMemberRemove",
@@ -16,12 +17,14 @@ module.exports = {
     })
     .setThumbnail(user.avatarURL({dynamic: true, size: 512}))
     .setDescription(`
-    ${member} has left 😢.`)
-      //\nJoined: <t:${parseInt(member.joinedTimestamp / 1000)}:R>\nLastest Member Count: **${guild.memberCount}**`)
+    ${member} has left 😢.\n
+    Joined: <t:${parseInt(member.joinedTimestamp / 1000)}:R>\nLastest Member Count: **${guild.memberCount}**`)
     .setFooter({
       text: `ID: ${user.id}`
     })
 
-    await member.guild.channels.cache.get("970331417072517192").send({embeds: [Embed]});
+    if (member.guild.channels.cache.get(joinLeaveID)) {
+      await member.guild.channels.cache.get(joinLeaveID).send({embeds: [Embed]});
+    }
   }
 }

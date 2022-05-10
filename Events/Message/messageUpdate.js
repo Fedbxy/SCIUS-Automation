@@ -1,4 +1,5 @@
 const { MessageEmbed, Message } = require("discord.js");
+const { chatLogsID } = require("./../../Structures/config.json");
 
 module.exports = {
     name: "messageUpdate",
@@ -24,6 +25,6 @@ module.exports = {
             text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`
         })
 
-        await newMessage.guild.channels.cache.get("973232015354761278").send({embeds: [Log]});
+        await newMessage.guild.channels.cache.get(chatLogsID).send({embeds: [Log]});
     }
 }

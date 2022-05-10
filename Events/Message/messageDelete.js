@@ -1,5 +1,6 @@
 const { MessageEmbed, Message } = require("discord.js");
 const { execute } = require("./messageUpdate");
+const { chatLogsID } = require("./../../Structures/config.json");
 
 module.exports = {
     name: "messageDelete",
@@ -21,6 +22,6 @@ module.exports = {
             Log.addField(`Aattachments:`, `${message.attachments.map(a => a.url)}`, true)
         }
 
-        await message.guild.channels.cache.get("973232015354761278").send({embeds: [Log]});
+        await message.guild.channels.cache.get(chatLogsID).send({embeds: [Log]});
     }
 }
