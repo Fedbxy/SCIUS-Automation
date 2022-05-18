@@ -67,5 +67,6 @@ module.exports = {
         "voiceStateUpdate",
         "warn",
         "webhookUpdate",
+        "DistubeEvents",
     ]
 }
