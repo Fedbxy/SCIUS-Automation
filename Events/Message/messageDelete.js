@@ -19,9 +19,11 @@ module.exports = {
         })
 
         if (message.attachments.size >= 1) {
-            Log.addField(`Aattachments:`, `${message.attachments.map(a => a.url)}`, true)
+            Log.addField(`Attachments:`, `${message.attachments.map(a => a.url)}`, true)
         }
 
-        await message.guild.channels.cache.get(chatLogsID).send({embeds: [Log]});
+        if (message.guild.channels.cache.get(chatLogsID)) {
+            await message.guild.channels.cache.get(chatLogsID).send({embeds: [Log]});
+        }
     }
 }

@@ -25,6 +25,8 @@ module.exports = {
             text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`
         })
 
-        await newMessage.guild.channels.cache.get(chatLogsID).send({embeds: [Log]});
+        if (newMessage.guild.channels.cache.get(chatLogsID)) {
+            await newMessage.guild.channels.cache.get(chatLogsID).send({embeds: [Log]});
+        }
     }
 }

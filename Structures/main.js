@@ -18,6 +18,7 @@ client.distube = new DisTube(client, {
   emitNewSongOnly: true,
   leaveOnFinish: true,
   emitAddSongWhenCreatingQueue: false,
+  youtubeDL: false,
   plugins: [new SpotifyPlugin()]
 });
 module.exports = client;
