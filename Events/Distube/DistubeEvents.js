@@ -9,7 +9,7 @@ const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter
 client.distube
     .on('playSong', (queue, song) => queue.textChannel.send({embeds: [new MessageEmbed()
     .setColor("GREEN")
-    .setDescription(`🎼 | Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`)]}
+    .setDescription(`🎶 | Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`)]}
     ))
 
     .on('addSong', (queue, song) => queue.textChannel.send({embeds: [new MessageEmbed()
@@ -19,7 +19,7 @@ client.distube
 
     .on('addList', (queue, playlist) => queue.textChannel.send({embeds: [new MessageEmbed()
     .setColor("GREEN")
-    .setDescription(`🎶 | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`)]}
+    .setDescription(`🎶 | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue.\n${status(queue)}`)]}
     ))
 
     .on('error', (channel, e) => {
@@ -41,5 +41,5 @@ client.distube
 
     .on('finish', queue => queue.textChannel.send({embeds: [new MessageEmbed()
     .setColor("YELLOW")
-    .setDescription('Queue finished! Leaving the channel...')]}
+    .setDescription('🏁 | Queue finished! Leaving the channel...')]}
     ))
