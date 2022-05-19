@@ -80,8 +80,15 @@ module.exports = {
         try {
             switch(options.getSubcommand()) {
                 case "play": {
-                    client.distube.play(VoiceChannel, options.getString("music"), { textChannel: channel, member: member});
-                    return interaction.reply({content: "🎼 Request received."});
+                    try {
+                        client.distube.play(VoiceChannel, options.getString("music"), { textChannel: channel, member: member});
+                        return interaction.reply({content: "🎼 Request received."});
+                    } catch (error) {
+                        const errorEmbed = new MessageEmbed()
+                        .setColor("RED")
+                        .setDescription(`⛔ Error: ${error}`)
+                        return interaction.reply({embeds: [errorEmbed]});
+                    }
                 }
 
                 case "volume": {
