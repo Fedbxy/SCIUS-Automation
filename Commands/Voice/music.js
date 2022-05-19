@@ -80,15 +80,8 @@ module.exports = {
         try {
             switch(options.getSubcommand()) {
                 case "play": {
-                    try {
-                        client.distube.play(VoiceChannel, options.getString("music"), { textChannel: channel, member: member});
-                        return interaction.reply({content: "🎼 Request received."});
-                    } catch (error) {
-                        const errorEmbed = new MessageEmbed()
-                        .setColor("RED")
-                        .setDescription(`⛔ Error: ${error}`)
-                        return interaction.reply({embeds: [errorEmbed]});
-                    }
+                    client.distube.play(VoiceChannel, options.getString("music"), { textChannel: channel, member: member});
+                    return interaction.reply({content: "🎼 Request received."});
                 }
 
                 case "volume": {
@@ -199,7 +192,7 @@ module.exports = {
                     .setTitle("Music Queue")
                     .setColor("BLUE")
                     .setImage(queue.songs[0].thumbnail)
-                    .setDescription(`🎶 | **Playing** \`${queue.songs[0].name}\` - \`${queue.songs[0].formattedDuration}\`\n\n**Queue list:**${isArrayEmpty(queue.songs.slice(1)) ? songs : "\n`None`"}`.slice(0, 4096))
+                    .setDescription(`🎶 | **Playing** \`${queue.songs[0].name}\` - \`${queue.songs[0].formattedDuration}\`\n\n🔢 | **Queue list:**${isArrayEmpty(queue.songs.slice(1)) ? songs : "\n`None`"}`.slice(0, 4096))
                     ]});
                 }
             }
