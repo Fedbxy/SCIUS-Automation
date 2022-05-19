@@ -19,7 +19,7 @@ client.distube
 
     .on('addList', (queue, playlist) => queue.textChannel.send({embeds: [new MessageEmbed()
     .setColor("GREEN")
-    .setDescription(`🎶 | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue.\n${status(queue)}`)]}
+    .setDescription(`🎶 | Added \`${playlist.name}\` playlist to queue.\n${status(queue)}`)]}
     ))
 
     .on('error', (channel, e) => {
@@ -29,7 +29,7 @@ client.distube
     console.error(e)
     })
 
-    .on('empty', channel => channel.send({embeds: [new MessageEmbed()
+    .on('empty', queue => queue.send({embeds: [new MessageEmbed()
     .setColor("RED")
     .setDescription('Voice channel is empty! Leaving the channel...')]}
     ))
